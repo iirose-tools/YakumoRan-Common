@@ -1,0 +1,79 @@
+[2022-09-26T20:30:52.004] [INFO] App - 正在加载插件 ./test.js
+[2022-09-26T20:30:52.006] [ERROR] App - 插件 ./test.js 加载失败:  Error: Cannot find module './test.js'
+Require stack:
+- D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\dist\core\loader\index.js
+- D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\dist\index.js
+- D:\GitHub\iirose-tools\YakumoRan-Common\welcome\dev.ts
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:955:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@cspotcode\source-map-support\source-map-support.js:811:30)
+    at Function.Module._load (node:internal/modules/cjs/loader:803:27)
+    at Module.require (node:internal/modules/cjs/loader:1021:19)
+    at require (node:internal/modules/cjs/helpers:103:18)
+    at PluginLoader.load (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\src\core\loader\index.ts:103:27)
+    at App.loadPlugin (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\src\index.ts:42:25)
+    at Object.<anonymous> (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\dev.ts:8:7)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module.m._compile (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\ts-node\src\index.ts:1618:23) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'D:\\GitHub\\iirose-tools\\YakumoRan-Common\\welcome\\node_modules\\@yakumoran\\core\\dist\\core\\loader\\index.js',
+    'D:\\GitHub\\iirose-tools\\YakumoRan-Common\\welcome\\node_modules\\@yakumoran\\core\\dist\\index.js',
+    'D:\\GitHub\\iirose-tools\\YakumoRan-Common\\welcome\\dev.ts'
+  ]
+}
+[2022-09-26T20:30:52.078] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:30:52.334] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:30:52.344] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:30:52.345] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:30:52.901] [WARN] Bot Core - 收到了无法解析的数据包: %1://m10.music.126.net/20220926203816/dae093012396...
+[2022-09-26T20:30:52.902] [INFO] Bot Core - 收到服务器返回数据, 登录成功
+[2022-09-26T20:31:17.950] [INFO] App - 正在加载插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts
+[2022-09-26T20:31:18.361] [ERROR] App - 插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts 加载失败:  TypeError: Plugin is not a constructor
+    at PluginLoader.load (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\src\core\loader\index.ts:106:15)
+    at App.loadPlugin (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\@yakumoran\core\src\index.ts:42:25)
+    at Object.<anonymous> (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\dev.ts:8:7)
+    at Module._compile (node:internal/modules/cjs/loader:1119:14)
+    at Module.m._compile (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1173:10)
+    at Object.require.extensions.<computed> [as .ts] (D:\GitHub\iirose-tools\YakumoRan-Common\welcome\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:997:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:838:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+[2022-09-26T20:31:18.394] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:31:18.490] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:31:18.499] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:31:18.500] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:31:18.812] [WARN] Bot Core - 收到了无法解析的数据包: %1://m804.music.126.net/20220926203838/22d2e3bb306...
+[2022-09-26T20:31:18.812] [INFO] Bot Core - 收到服务器返回数据, 登录成功
+[2022-09-26T20:32:14.008] [INFO] App - 正在加载插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts
+[2022-09-26T20:32:14.409] [INFO] App - 插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts 加载完成
+[2022-09-26T20:32:14.412] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:32:14.834] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:32:14.843] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:32:14.844] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:32:15.558] [WARN] Bot Core - 收到了无法解析的数据包: %1://m804.music.126.net/20220926203838/22d2e3bb306...
+[2022-09-26T20:32:15.559] [INFO] Bot Core - 收到服务器返回数据, 登录成功
+[2022-09-26T20:37:25.948] [INFO] App - 正在加载插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts
+[2022-09-26T20:37:26.440] [INFO] App - 插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts 加载完成
+[2022-09-26T20:37:26.444] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:37:26.603] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:37:26.612] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:37:26.613] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:37:27.227] [WARN] Bot Core - 收到了无法解析的数据包: %1://m10.music.126.net/20220926203853/4ae50ac3bc65...
+[2022-09-26T20:37:27.228] [INFO] Bot Core - 收到服务器返回数据, 登录成功
+[2022-09-26T20:42:01.033] [INFO] App - 正在加载插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts
+[2022-09-26T20:42:01.497] [INFO] App - 插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts 加载完成
+[2022-09-26T20:42:01.500] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:42:02.197] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:42:02.208] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:42:02.209] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:42:03.157] [WARN] Bot Core - 收到了无法解析的数据包: %1s://upos-hz-mirrorakam.akamaized.net/upgcxcode/0...
+[2022-09-26T20:42:03.158] [INFO] Bot Core - 收到服务器返回数据, 登录成功
+[2022-09-26T20:42:52.996] [INFO] App - 正在加载插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts
+[2022-09-26T20:42:53.460] [INFO] App - 插件 D:\GitHub\iirose-tools\YakumoRan-Common\welcome/./index.ts 加载完成
+[2022-09-26T20:42:53.465] [INFO] WebServer - WebServer 启动成功，监听端口 8801
+[2022-09-26T20:42:53.595] [INFO] Bot Core - 登陆中...
+[2022-09-26T20:42:53.606] [INFO] Bot Core - 登录包已发送，等待服务器响应...
+[2022-09-26T20:42:53.606] [INFO] WebSocket - WebSocket连接成功
+[2022-09-26T20:42:54.552] [WARN] Bot Core - 收到了无法解析的数据包: %1s://upos-hz-mirrorakam.akamaized.net/upgcxcode/0...
+[2022-09-26T20:42:54.553] [INFO] Bot Core - 收到服务器返回数据, 登录成功
