@@ -1,0 +1,32 @@
+import { Plugin, App, JoinRoomEvent, PublicMessageEvent } from '@yakumoran/core'
+import { promises as fs } from 'fs'
+import { join } from 'path'
+import { Router, static as ExpressStatic } from 'express'
+
+export default (app: App) => {
+  class OfficialWelcome extends Plugin {
+    async init () {
+      const route = Router()
+      
+      route.use(ExpressStatic(join(__dirname, 'public')))
+
+      route.get('/logs', async (req, res) => {
+        const year = new Date().getFullYear()
+        const month = (new Date().getMonth() + 1).toString().padStart(2, '0')
+        const day = new Date().getDate().toString().padStart(2, '0')
+        const filename = `default.${year}-${month}-${day}.log`
+        const filepath = join(process.cwd(), 'logs', filename)
+        const data = await fs.readFile(filepath, 'utf-8')
+        res.send(data)
+      })
+
+      this.app.web.route('/logviewer', route)
+
+      const form = this.app.createForm('logviewer', '日志', 'fa-solid fa-gears')
+
+      form.addIframe('/logviewer')
+    }
+  }
+
+  return OfficialWelcome
+}

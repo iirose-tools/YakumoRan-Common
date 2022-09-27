@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    html,body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .viewer {
+      background-color: #1E1E1E;
+      color: #D4D4D4;
+      height: 100%;
+      width: 100%;
+    }
+
+    .viewer p {
+      margin: 0;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .viewer p:hover {
+      background-color: #2F2F2F;
+    }
+  </style>
+
+  <div class="viewer"></div>
+
+  <script>
+    const getLogs = async () => {
+      const resp = await fetch('/logviewer/logs')
+      const logs = await resp.text()
+
+      const viewer = document.querySelector('.viewer')
+      viewer.innerHTML = logs.split('\n').map(log => `<p>${log}</p>`).join('')
+      viewer.scrollTop = viewer.scrollHeight
+    }
+
+    setInterval(getLogs, 1000)
+  </script>
+</body>
+</html>
