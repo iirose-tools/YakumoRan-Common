@@ -186,7 +186,7 @@ export default (app: App) => {
         value: await (await this.app.db.table('plugin_welcome').where({ type: 'new' }).select('content').first()).content
       })
 
-      this.form.onSubmitted(this.handleConfigUpdate)
+      this.form.onSubmitted(this.handleConfigUpdate.bind(this))
     }
 
     recreateForm () {
