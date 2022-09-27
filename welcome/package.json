@@ -14,7 +14,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "name": "@yakumoran/common-welcome",
+  "name": "@yakumoran/welcome",
   "version": "2.0.0",
   "description": "Automatically welcome new members to your room.",
   "main": "./index.js",

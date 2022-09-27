@@ -15,7 +15,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "name": "@yakumoran/common-logviewer",
+  "name": "@yakumoran/logviewer",
   "version": "2.0.1",
   "description": "Log viewer for YakumoRan",
   "main": "./index.js",
