@@ -4,6 +4,7 @@
     "target": "ES2021",
     "moduleResolution": "Node",
     "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs"
   }
 }
