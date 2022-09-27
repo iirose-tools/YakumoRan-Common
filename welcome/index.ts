@@ -304,6 +304,23 @@ export default (app: App) => {
       }
     }
 
+    @app.decorators.Command({
+      command: /\/wb del/,
+      desc: '删除欢迎词',
+      name: 'wb-del',
+      usage: '/wb del'
+    })
+    async delWelcome (event: PublicMessageEvent, match: RegExpMatchArray) {
+      const uid = event.uid
+
+      try {
+        await this.app.db.table('plugin_welcome').where({ uid }).delete()
+        this.app.api.sendPublicMessage('[Welcome] 设置成功')
+      } catch (error) {
+        this.app.api.sendPublicMessage('[Welcome] 设置失败')
+      }
+    }
+
     @app.decorators.EventListener('JoinRoom')
     async onJoinRoom(event: JoinRoomEvent) {
       const uid = event.uid
@@ -318,8 +335,16 @@ export default (app: App) => {
       const userConfig = await this.app.db.table('plugin_welcome').where({ uid: event.uid }).first()
 
       if (userConfig) {
+        // 自定义欢迎词
         const { content } = userConfig
-        await this.app.api.sendPublicMessage(`  [*${content}*]  ${content}`)
+        await this.app.api.sendPublicMessage(`  [*${event.username}*]  ${content}`)
+        return
+      }
+
+      if (event.uid.startsWith('X')) {
+        // 新人
+        const { content } = await this.app.db.table('plugin_welcome').where({ type: 'new' }).first()
+        await this.app.api.sendPublicMessage(`  [*${event.username}*]  ${content}`)
         return
       }
 
