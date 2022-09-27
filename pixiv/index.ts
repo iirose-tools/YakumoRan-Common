@@ -102,7 +102,7 @@ export default (app: App) => {
       const illusts = []
       const resp = []
       for (let i = 1; i < 5; i++) {
-        resp.push(this.axios.get(`/api/pixiv/search?word=${keyword}&page=${i}`))
+        resp.push(this.axios.get(`/api/pixiv/search?word=${encodeURIComponent(keyword)}&page=${i}`))
       }
       const r = (await Promise.all(resp)).flat().map(e => { return e.data.illusts }).flat()
       const tmp = Object.values(r).filter((e: any) => {
