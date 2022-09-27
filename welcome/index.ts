@@ -6,7 +6,7 @@ export default (app: App) => {
     public form: WebForm
     public UserLock: Map<string, boolean> = new Map()
 
-    async init () {
+    async init() {
       this.plugin_author = '风间苏苏'
       this.plugin_description = ''
       this.plugin_id = 'welcome'
@@ -18,7 +18,7 @@ export default (app: App) => {
         await this.app.db.schema.createTable('plugin_welcome', table => {
           table.string('uid', 32)
           table.string('type', 32).defaultTo('createByUser')
-          table.string('content', 1024)
+          table.string('content', 1024).defaultTo('')
         })
 
         const sentences = [
@@ -147,7 +147,7 @@ export default (app: App) => {
       this.initForm()
     }
 
-    async initForm () {
+    async initForm() {
       this.form.addText('自动欢迎', [
         'text-align: center',
         'font-size: 20px',
@@ -182,109 +182,108 @@ export default (app: App) => {
         value: await (await this.app.db.table('plugin_welcome').where({ type: 'special' }).select('content')).map((item) => item.content).join('\n')
       })
 
-      this.form.addInput('special', 'textarea', '新人欢迎词', {
+      this.form.addInput('new', 'textarea', '新人欢迎词', {
         value: await (await this.app.db.table('plugin_welcome').where({ type: 'new' }).select('content').first()).content
       })
 
       this.form.onSubmitted(this.handleConfigUpdate.bind(this))
     }
 
-    recreateForm () {
+    recreateForm() {
       this.app.deleteForm(this.form)
       this.form = this.app.createForm('welcome', '自动欢迎', 'fa-solid fa-handshake')
       this.initForm()
     }
 
-    async writeConfig (config) {
-      async () => {
-        const morning = config['welcome-morning'].split('\n')
-        const noon = config['welcome-noon'].split('\n')
-        const afternoon = config['welcome-afternoon'].split('\n')
-        const evening = config['welcome-evening'].split('\n')
-        const midnight = config['welcome-midnight'].split('\n')
-        const special = config['welcome-special'].split('\n')
-        const newUser = config['welcome-new']
+    async writeConfig(config) {
+      const morning = config['welcome-morning'].split('\n')
+      const noon = config['welcome-noon'].split('\n')
+      const afternoon = config['welcome-afternoon'].split('\n')
+      const evening = config['welcome-evening'].split('\n')
+      const midnight = config['welcome-midnight'].split('\n')
+      const special = config['welcome-special'].split('\n')
+      const newUser = config['welcome-new']
 
-        const trans = await this.app.db.transaction()
+      const trans = await this.app.db.transaction()
 
-        try {
-          await trans.table('plugin_welcome').where({ type: 'morning' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'noon' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'afternoon' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'evening' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'midnight' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'special' }).delete()
-          await trans.table('plugin_welcome').where({ type: 'new' }).delete()
+      try {
+        await trans.table('plugin_welcome').where({ type: 'morning' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'noon' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'afternoon' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'evening' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'midnight' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'special' }).delete()
+        await trans.table('plugin_welcome').where({ type: 'new' }).delete()
 
-          await trans.batchInsert('plugin_welcome', morning.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'morning',
-              content: sentence
-            }
-          }))
-
-          await trans.batchInsert('plugin_welcome', noon.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'noon',
-              content: sentence
-            }
-          }))
-
-          await trans.batchInsert('plugin_welcome', afternoon.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'afternoon',
-              content: sentence
-            }
-          }))
-
-          await trans.batchInsert('plugin_welcome', evening.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'evening',
-              content: sentence
-            }
-          }))
-
-          await trans.batchInsert('plugin_welcome', midnight.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'midnight',
-              content: sentence
-            }
-          }))
-
-          await trans.batchInsert('plugin_welcome', special.map((sentence) => {
-            return {
-              uid: 'default',
-              type: 'special',
-              content: sentence
-            }
-          }))
-
-          await trans.table('plugin_welcome').insert({
+        await trans.batchInsert('plugin_welcome', morning.map((sentence) => {
+          return {
             uid: 'default',
-            type: 'new',
-            content: newUser
-          })
+            type: 'morning',
+            content: sentence
+          }
+        }))
 
-          trans.commit()
-          this.recreateForm()
-        } catch (error) {
-          trans.rollback(error)
-          this.logger.info('数据写入失败:', error)
-        }
+        await trans.batchInsert('plugin_welcome', noon.map((sentence) => {
+          return {
+            uid: 'default',
+            type: 'noon',
+            content: sentence
+          }
+        }))
+
+        await trans.batchInsert('plugin_welcome', afternoon.map((sentence) => {
+          return {
+            uid: 'default',
+            type: 'afternoon',
+            content: sentence
+          }
+        }))
+
+        await trans.batchInsert('plugin_welcome', evening.map((sentence) => {
+          return {
+            uid: 'default',
+            type: 'evening',
+            content: sentence
+          }
+        }))
+
+        await trans.batchInsert('plugin_welcome', midnight.map((sentence) => {
+          return {
+            uid: 'default',
+            type: 'midnight',
+            content: sentence
+          }
+        }))
+
+        await trans.batchInsert('plugin_welcome', special.map((sentence) => {
+          return {
+            uid: 'default',
+            type: 'special',
+            content: sentence
+          }
+        }))
+
+        await trans.table('plugin_welcome').insert({
+          uid: 'default',
+          type: 'new',
+          content: newUser
+        })
+
+        trans.commit()
+        this.recreateForm()
+        this.logger.info('数据写入成功')
+      } catch (error) {
+        trans.rollback(error)
+        this.logger.info('数据写入失败:', error)
       }
     }
 
-    handleConfigUpdate (config) {
+    handleConfigUpdate(config) {
       this.writeConfig(config)
       return `数据提交成功，具体信息请查看日志`
     }
 
-    random (m, n) {
+    random(m, n) {
       return Math.floor(Math.random() * (n - m + 1) + m)
     }
 
@@ -294,7 +293,7 @@ export default (app: App) => {
       name: 'wb-set',
       usage: '/wb set ...'
     })
-    async setWelcome (event: PublicMessageEvent, match: RegExpMatchArray) {
+    async setWelcome(event: PublicMessageEvent, match: RegExpMatchArray) {
       const content = match[1]
       const uid = event.uid
 
@@ -303,7 +302,7 @@ export default (app: App) => {
           uid,
           content
         })
-  
+
         this.app.api.sendPublicMessage('[Welcome] 设置成功')
       } catch (error) {
         this.app.api.sendPublicMessage('[Welcome] 设置失败')
@@ -316,7 +315,7 @@ export default (app: App) => {
       name: 'wb-del',
       usage: '/wb del'
     })
-    async delWelcome (event: PublicMessageEvent, match: RegExpMatchArray) {
+    async delWelcome(event: PublicMessageEvent, match: RegExpMatchArray) {
       const uid = event.uid
 
       try {
