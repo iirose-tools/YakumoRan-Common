@@ -4,7 +4,7 @@ import { join } from 'path'
 import { Router, static as ExpressStatic } from 'express'
 
 export default (app: App) => {
-  class OfficialWelcome extends Plugin {
+  class OfficialLogViewer extends Plugin {
     async init () {
       const route = Router()
       
@@ -28,5 +28,5 @@ export default (app: App) => {
     }
   }
 
-  return OfficialWelcome
+  return OfficialLogViewer
 }
