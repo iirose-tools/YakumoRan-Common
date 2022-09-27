@@ -8,6 +8,16 @@
     "typescript": "^4.8.3"
   },
   "scripts": {
-    "dev": "ts-node ./dev.ts"
-  }
+    "dev": "ts-node ./dev.ts",
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "name": "@yakumoran/common-welcome",
+  "version": "2.0.0",
+  "description": "Automatically welcome new members to your room.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "license": "APACHE-2.0"
 }

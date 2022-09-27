@@ -3,8 +3,8 @@ import { WebForm } from '@yakumoran/core/dist/core/web/WebForm'
 
 export default (app: App) => {
   class OfficialWelcome extends Plugin {
-    private form: WebForm
-    private UserLock: Map<string, boolean> = new Map()
+    public form: WebForm
+    public UserLock: Map<string, boolean> = new Map()
 
     async init () {
       const hasTable = await this.app.db.schema.hasTable('plugin_welcome')
