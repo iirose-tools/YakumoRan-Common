@@ -7,6 +7,12 @@ export default (app: App) => {
     public UserLock: Map<string, boolean> = new Map()
 
     async init () {
+      this.plugin_author = '风间苏苏'
+      this.plugin_description = ''
+      this.plugin_id = 'welcome'
+      this.plugin_name = '自动欢迎'
+      this.plugin_version = '2.0.2'
+
       const hasTable = await this.app.db.schema.hasTable('plugin_welcome')
       if (!hasTable) {
         await this.app.db.schema.createTable('plugin_welcome', table => {

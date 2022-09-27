@@ -6,8 +6,13 @@ import { Router, static as ExpressStatic } from 'express'
 export default (app: App) => {
   class OfficialLogViewer extends Plugin {
     async init () {
+      this.plugin_author = '风间苏苏'
+      this.plugin_description = ''
+      this.plugin_id = 'logviewer'
+      this.plugin_name = '日志查看器'
+      this.plugin_version = '2.0.4'
+
       const route = Router()
-      
       route.use(ExpressStatic(join(__dirname, 'public')))
 
       route.get('/logs', async (req, res) => {
