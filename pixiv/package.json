@@ -16,7 +16,7 @@
     "access": "public"
   },
   "name": "@yakumoran/pixiv",
-  "version": "2.0.0",
+  "version": "2.0.0-fix1",
   "description": "Pixiv image search",
   "main": "./index.js",
   "types": "./index.d.ts",

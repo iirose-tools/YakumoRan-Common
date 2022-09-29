@@ -5,6 +5,7 @@
     "moduleResolution": "Node",
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "module": "commonjs"
+    "module": "commonjs",
+    "resolveJsonModule": true
   }
 }

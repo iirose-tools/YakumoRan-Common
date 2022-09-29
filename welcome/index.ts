@@ -1,5 +1,6 @@
 import { Plugin, App, JoinRoomEvent, PublicMessageEvent } from '@yakumoran/core'
 import { WebForm } from '@yakumoran/core/dist/core/web/WebForm'
+import  pkg from './package.json'
 
 export default (app: App) => {
   class OfficialWelcome extends Plugin {
@@ -11,7 +12,7 @@ export default (app: App) => {
       this.plugin_description = ''
       this.plugin_id = 'welcome'
       this.plugin_name = '自动欢迎'
-      this.plugin_version = '2.0.2'
+      this.plugin_version = pkg.version
 
       const hasTable = await this.app.db.schema.hasTable('plugin_welcome')
       if (!hasTable) {

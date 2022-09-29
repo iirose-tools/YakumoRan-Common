@@ -2,6 +2,7 @@ import { Plugin, App, JoinRoomEvent, PublicMessageEvent } from '@yakumoran/core'
 import { promises as fs } from 'fs'
 import { join } from 'path'
 import { Router, static as ExpressStatic } from 'express'
+import  pkg from './package.json'
 
 export default (app: App) => {
   class OfficialLogViewer extends Plugin {
@@ -10,7 +11,7 @@ export default (app: App) => {
       this.plugin_description = ''
       this.plugin_id = 'logviewer'
       this.plugin_name = '日志查看器'
-      this.plugin_version = '2.0.4'
+      this.plugin_version = pkg.version
 
       const route = Router()
       route.use(ExpressStatic(join(__dirname, 'public')))

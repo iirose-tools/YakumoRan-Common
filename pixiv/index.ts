@@ -2,6 +2,7 @@ import { Plugin, App, JoinRoomEvent, PublicMessageEvent } from '@yakumoran/core'
 import { WebForm } from '@yakumoran/core/dist/core/web/WebForm'
 import axios from 'axios'
 import { AxiosInstance } from 'axios'
+import  pkg from './package.json'
 
 export default (app: App) => {
   class OfficialPixiv extends Plugin {
@@ -14,7 +15,7 @@ export default (app: App) => {
       this.plugin_description = ''
       this.plugin_id = 'pixiv'
       this.plugin_name = 'Pixiv搜图'
-      this.plugin_version = '2.0.0'
+      this.plugin_version = pkg.version
 
       const hasTable = await this.app.db.schema.hasTable('plugin_pixiv')
       if (!hasTable) {
