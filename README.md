@@ -3,3 +3,5 @@
 
 ## 插件列表
 - [欢迎插件](/welcome)
+- [网页日志查看工具](/LogViewer)
+- [Pixiv搜图](/pixiv)
