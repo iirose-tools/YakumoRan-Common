@@ -298,14 +298,19 @@ export default (app: App) => {
       const content = match[1]
       const uid = event.uid
 
+      const trans = await this.app.db.transaction()
+
       try {
-        await this.app.db.table('plugin_welcome').insert({
+        await trans.table('plugin_welcome').where({ uid }).delete()
+        await trans.table('plugin_welcome').insert({
           uid,
           content
         })
 
+        await trans.commit()
         this.app.api.sendPublicMessage('[Welcome] 设置成功')
       } catch (error) {
+        await trans.rollback()
         this.app.api.sendPublicMessage('[Welcome] 设置失败')
       }
     }
